@@ -20,4 +20,9 @@ public class Url {
     private int hits;
     private int userId;
     private String status;
+
+    public Url() {
+//        this.longUrl = longUrl;
+//        createdAt = LocalDateTime.now();
+    }
 }
