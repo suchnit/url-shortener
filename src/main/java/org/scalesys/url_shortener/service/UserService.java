@@ -1,7 +1,6 @@
 package org.scalesys.url_shortener.service;
 
 import org.scalesys.url_shortener.entity.Users;
-import org.scalesys.url_shortener.repository.UrlRepository;
 import org.scalesys.url_shortener.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 
 @Service
 public class UrlService {
-    private UrlRepository urlRepository;
+    private final UrlRepository urlRepository;
 
     @Autowired
     public UrlService(UrlRepository urlRepository) {
