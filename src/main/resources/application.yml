@@ -11,6 +11,30 @@ spring:
     hibernate:
       ddl-auto: update
     show-sql: true
+logging:
+  level:
+    root: INFO
+    org.scalesys.url_shortener: DEBUG
+    org.springframework.web: INFO
+    org.hibernate.SQL: ERROR        # Logs SQL statements
+    org.hibernate.type.descriptor.sql: ERROR  # Logs SQL bind parameters
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+  file:
+    name: /home/subhrat/work/tmp/logs/url-shortener.log
+server:
+  port: 8081
+  tomcat:
+    accesslog:
+      enabled: true
+      directory: /home/subhrat/work/tmp/logs
+      prefix: access_log
+      suffix: .log
+      pattern: "%h %l %u %t \"%r\" %s %b %D"
+      rotate: true
+      rename-on-rotate: true
+      request-attributes-enabled: true
+      buffered: true
 #  cache:
 #    type: redis
 #  redis:
