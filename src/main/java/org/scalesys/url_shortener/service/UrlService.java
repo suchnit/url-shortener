@@ -6,10 +6,12 @@ import org.scalesys.url_shortener.entity.Url;
 import org.scalesys.url_shortener.enums.UrlStatus;
 import org.scalesys.url_shortener.repository.UrlRepository;
 import org.scalesys.url_shortener.util.UrlEncoder;
+import org.scalesys.url_shortener.util.UrlValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.util.StringUtils;
 
+import java.net.MalformedURLException;
+import java.net.URISyntaxException;
 import java.time.LocalDateTime;
 import java.util.concurrent.CompletableFuture;
 
@@ -23,13 +25,9 @@ public class UrlService {
         this.urlRepository = urlRepository;
     }
 
-    public String shortenUrl(String longUrl) throws BadRequestException {
+    public String shortenUrl(String longUrl) throws BadRequestException, MalformedURLException, URISyntaxException {
         log.debug("==>> shortenUrl: {}",longUrl);
-
-        if(!StringUtils.hasText(longUrl)) {
-            throw new BadRequestException("Invalid longUrl");
-        }
-
+        UrlValidator.validate(longUrl);
         String shortCode;
         Url urlFromDb = urlRepository.findByLongUrl(longUrl);
 

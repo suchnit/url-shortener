@@ -7,6 +7,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.net.MalformedURLException;
+import java.net.URISyntaxException;
+
 @RequestMapping("/api/v1/url/")
 @RestController
 public class UrlController {
@@ -18,7 +21,7 @@ public class UrlController {
     }
 
     @PostMapping("shorten")
-    public ResponseEntity<String> shortenUrl(@RequestParam String longUrl) throws BadRequestException {
+    public ResponseEntity<String> shortenUrl(@RequestParam String longUrl) throws BadRequestException, MalformedURLException, URISyntaxException {
         final String shortenedUrl = urlService.shortenUrl(longUrl);
         return new ResponseEntity<>(shortenedUrl, HttpStatus.OK);
     }
