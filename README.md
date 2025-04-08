@@ -6,19 +6,19 @@ A high-performance, scalable URL shortener built with **Spring Boot**, **Postgre
 
 ## 🚀 Features
 - Generate unique short URLs for long links
-- Support for custom aliases
+- Support for custom aliases - TODO
 - Expiry support for short links
-- Redirection with caching (Redis)
-- Access logs and basic analytics
-- Pluggable rate limiting and security features
+- Redirection with caching (Redis) - TODO
+- Access logs and basic analytics - TODO
+- Pluggable rate limiting and security features - TODO
 
 ---
 
 ## 🧠 System Design Highlights
 - **Hybrid ID + Base62** encoding for efficient short code generation
-- **Cache Aside Pattern** with Redis for ultra-fast redirection
-- **Async processing** ready (Kafka/RabbitMQ placeholders)
-- **Daily rotated access logs** via embedded Tomcat
+- **Cache Aside Pattern** with Redis for ultra-fast redirection - TODO
+- **Async processing** ready (Kafka/RabbitMQ placeholders) - TODO
+- **Daily rotated access logs** via embedded Tomcat - TODO
 
 ---
 
@@ -26,9 +26,9 @@ A high-performance, scalable URL shortener built with **Spring Boot**, **Postgre
 - Java 17
 - Spring Boot 3.x
 - PostgreSQL
-- Redis
+- Redis - TODO
 - Maven
-- Docker (optional)
+- Docker (optional) - TODO
 
 ---
 
