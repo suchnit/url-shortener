@@ -1,8 +1,6 @@
 package org.scalesys.url_shortener.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -23,7 +21,10 @@ public class Url {
     private String shortCode;
     private LocalDateTime createdAt;
     private LocalDateTime expiresAt;
-    private int hits;
-    private int userId;
+    private long hits;
     private String status;
+
+    @ManyToOne
+    @JoinColumn(name = "created_by")
+    private AppUser createdBy;
 }

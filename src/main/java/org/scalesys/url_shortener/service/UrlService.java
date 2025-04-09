@@ -2,6 +2,7 @@ package org.scalesys.url_shortener.service;
 
 import lombok.extern.slf4j.Slf4j;
 import org.apache.coyote.BadRequestException;
+import org.scalesys.url_shortener.entity.AppUser;
 import org.scalesys.url_shortener.entity.Url;
 import org.scalesys.url_shortener.enums.UrlStatus;
 import org.scalesys.url_shortener.repository.UrlRepository;
@@ -19,10 +20,12 @@ import java.util.concurrent.CompletableFuture;
 @Service
 public class UrlService {
     private final UrlRepository urlRepository;
+    private final UserService userService;
 
     @Autowired
-    public UrlService(UrlRepository urlRepository) {
+    public UrlService(UrlRepository urlRepository, UserService userService) {
         this.urlRepository = urlRepository;
+        this.userService = userService;
     }
 
     public String shortenUrl(String longUrl) throws BadRequestException, MalformedURLException, URISyntaxException {
@@ -58,11 +61,11 @@ public class UrlService {
     }
 
     private Url createUrl(String longUrl) {
+        AppUser appUser = userService.getCurrentUser();
         Url url = Url.builder()
                 .longUrl(longUrl)
                 .createdAt(LocalDateTime.now())
-                //TODO set proper user
-                .userId(1)
+                .createdBy(appUser)
                 .status(UrlStatus.ACTIVE.getValue())
                 .build();
         Url savedUrl = urlRepository.save(url); // generates ID

@@ -1,6 +1,6 @@
 package org.scalesys.url_shortener.controller;
 
-import org.scalesys.url_shortener.entity.Users;
+import org.scalesys.url_shortener.entity.AppUser;
 import org.scalesys.url_shortener.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,7 +20,7 @@ public class UserController {
     }
 
     @GetMapping
-    public List<Users> get() {
+    public List<AppUser> get() {
         return userService.get();
     }
 }

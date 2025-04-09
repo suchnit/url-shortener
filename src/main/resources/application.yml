@@ -40,3 +40,6 @@ server:
 #  redis:
 #    host: localhost
 #    port: 6379
+jwt:
+  secret: QPKjF8YnvdqxEvLpXd8WskRfbsfWc50z+N7hbFZI3vY=
+  expiration: 3600000 # 1 hour
